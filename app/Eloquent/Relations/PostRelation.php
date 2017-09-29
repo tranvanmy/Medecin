@@ -1,13 +1,12 @@
 <?php
 namespace App\Eloquent\Relations;
 
-use App\Eloquent\Post;
-use App\Eloquent\CategoryPostRelate;
+use App\Eloquent\Category;
 
 trait PostRelation
 {
-      public function categories()
+    public function categories()
     {
-        return $this->belongstoMany(CategoryPostRelate::class, 'post_id');
+        return $this->belongsTo(Category::class, 'category_id');
     }
 }

@@ -81,7 +81,7 @@ class LoginController extends Controller
         $remember = $request->input('remember');
         if (Auth::attempt(['email' => $email, 'password' => $password], $remember)){
             if((Auth::user()->permission) == 1 || (Auth::user()->permission) == 2) {
-                return  redirect('/admin');
+                return redirect('/admin/user');
             } elseif((Auth::user()->permission) == 3) {
                 Auth::logout();
                 session()->flash('message', trans('message.user_disable'));

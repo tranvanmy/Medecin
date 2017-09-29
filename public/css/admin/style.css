@@ -11,13 +11,13 @@ i {
 /*               NAVIGATION                  */
 /*********************************************/
 nav {
-    background: #3b5998 !important;
+    background: #3c834d !important;
 }
 nav ul {
     margin:0px;
 }
 nav li:hover {
-    background: #324b81;
+    background: #3c834d;
 }
 nav a {
     color: #fff !important;
@@ -95,7 +95,7 @@ nav .user-setting .menu{
 .sidebar-admin ul > p {
     color: #ffffff;
     padding: 10px 0px;
-    background: #3b5998;
+    background: #3c834d;
     font-weight: bold;
     margin: 0px;
 }

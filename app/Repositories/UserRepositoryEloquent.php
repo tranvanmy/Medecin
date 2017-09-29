@@ -30,9 +30,9 @@ class UserRepositoryEloquent extends AbstractRepositoryEloquent implements UserR
         return $this->model()->where('phone', $phone)->first();
     }
 
-    public function getAllUser($permissionadmin, $permissiondoctor, $paginate)
+    public function getAllUser($permissionadmin, $permissiondoctor, $permissiondisable, $paginate)
     {
-        return $this->model()->where('permission', $permissionadmin)->orwhere('permission', $permissiondoctor)->paginate($paginate);
+        return $this->model()->where('permission', $permissionadmin)->orwhere('permission', $permissiondoctor)->orwhere('permission', $permissiondisable)->paginate($paginate);
     }
 
 }

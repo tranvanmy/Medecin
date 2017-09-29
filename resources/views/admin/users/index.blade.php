@@ -45,9 +45,13 @@
                         <td class="col-md-1 text-center" v-if="list.permission == 1"><span class="label label-success">
                             {{ trans('message.Admin') }}
                         </span></td>
-                         <td class="col-md-1 text-center" v-if="list.permission == 2"><span class="label label-success">
+                        <td class="col-md-1 text-center" v-if="list.permission == 2"><span class="label label-success">
                             {{ trans('message.Doctor') }}
                         </span></td>
+                         <td class="col-md-1 text-center" v-if="list.permission == 3"><span class="label label-danger">
+                            {{ trans('message.Disable') }}
+                        </span></td>
+
                         <td class="col-md-1 text-center">
                             <a data-toggle="modal" v-on:click="editUser(list)"><i class="fa fa-list" aria-hidden="true"></i></a>
                             <a v-on:click="deleteUser(list.id)"><i class="fa fa-fw  fa-close get-color-icon-delete" ></i></a>
@@ -55,23 +59,21 @@
                     </tr>
                 </tbody>
             </table>
-                {{-- <nav>
-                    <ul class="pagination">
-                        <li v-if="pagination.current_page > 1">
-                            <a href="#" aria-label="Previous" @click.prevent="changePage(pagination.current_page - 1)">
-                                <span aria-hidden="true">«</span>
-                            </a>
-                        </li>
-                        <li v-for="page in pagesNumber"
-                        v-bind:class="[ page == isActived ? 'active' : '']">
-                        <a href="#" @click.prevent="changePage(page)">@{{ page }}</a>
+                <ul class="pagination">
+                    <li v-if="pagination.current_page > 1">
+                        <a href="#" aria-label="Previous" @click.prevent="changePage(pagination.current_page - 1)">
+                            <span aria-hidden="true">«</span>
+                        </a>
+                    </li>
+                    <li v-for="page in pagesNumber"
+                    v-bind:class="[ page == isActived ? 'active' : '']">
+                    <a href="#" @click.prevent="changePage(page)">@{{ page }}</a>
                     </li>
                     <li v-if="pagination.current_page < pagination.last_page">
                         <a href="#" aria-label="Next" @click.prevent="changePage(pagination.current_page + 1)"> <span aria-hidden="true">»</span>
                         </a>
                     </li>
-                    </ul>
-                </nav> --}}
+                </ul>
             </div>
         </div>
     <!-- Info User -->
@@ -120,6 +122,9 @@
                                     </span>
                                     <span  v-if="fillItem.permission == 2" class="label label-success">
                                         {{ trans('message.Doctor') }}
+                                    </span>
+                                    <span  v-if="fillItem.permission == 3" class="label label-danger">
+                                        {{ trans('message.Disable') }}
                                     </span>
                                 </a>
                             </li>
@@ -194,8 +199,9 @@
                     <label>{{ trans('message.permisstion') }}</label>
                     <span v-if="formErrorsUpdate['permission']" class="error text-danger">@{{ formErrorsUpdate['permission'][0] }}</span><br>
                      <select class="form-control" name="permission" v-model="fillItem.permission" v-on:change="specialist">
-                        <option value="1">Amin</option>
-                        <option value="2">Doctor</option>
+                        <option value="1">{{ __('Amin') }}</option>
+                        <option value="2">{{ __('Doctor') }}</option>
+                        <option value="3">{{ __('Disable') }}</option>
                     </select>
                 </div>
                  <div class="form-group col-md-6" id="sepilisc">

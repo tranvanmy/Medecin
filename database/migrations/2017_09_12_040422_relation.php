@@ -25,9 +25,8 @@ class Relation extends Migration
         Schema::table('medical_histories', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users');
         });
-        Schema::table('category_post_relates', function (Blueprint $table) {
+        Schema::table('posts', function (Blueprint $table) {
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->foreign('post_id')->references('id')->on('posts');
         });
     }
 

@@ -16,12 +16,16 @@
             </a>
         </li>
         <p class="text-center">{{ trans('message.component') }}</p>
-        <li>
-            <a href="{{ route('user.index') }}">
-                <i class="fa fa-dashboard fa-fw"></i>
-                {{ trans('message.manage_users') }}
-            </a>
-        </li>
+        @if(auth::check())
+            @if(auth::user()->permission == 1)
+                <li>
+                    <a href="{{ route('user.index') }}">
+                        <i class="fa fa-dashboard fa-fw"></i>
+                        {{ trans('message.manage_users') }}
+                    </a>
+                </li>
+            @endif
+        @endif
         <li>
             <a href="{{ route('patient.index') }}">
                 <i class="fa fa-dashboard fa-fw"></i>

@@ -28,6 +28,7 @@ return [
     'logout' => 'Logout',
     'edit' => 'Edit',
     'close' => 'Close',
+    'Disable' => 'Disable',
     'info_user' => 'Info User',
     'gender' => 'Gender',
     'permission' => 'Permission',

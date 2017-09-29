@@ -2,7 +2,7 @@
 
 @section('content-admin')
 <div class="content-admin">
-    <div class="panel panel-default">
+    <div class="panel panel-default" id="listPost">
         <div class="panel-heading">
             <h2>{{ trans('message.posts') }}</h2>
         </div>
@@ -26,19 +26,38 @@
                     </tr>   
                 </thead>
                 <tbody>
-                    <tr>
-                        <th class="col-md-1">1</th>
-                        <th class="col-md-2">Viet Toan</th>
-                        <th class="col-md-2">0123456789</th>
-                        <th class="col-md-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</th>
-                        <th class="col-md-1">
+                    <tr v-for="post in listPosts"  v-bind:id='"Post-"+ post.id'>
+                        <th class="col-md-1">@{{ post.id }}</th>
+                        <th class="col-md-2">@{{ post.title }}</th>
+                        <th class="col-md-2">
+                            <h5 class="ellipis">
+                            @{{ post.description }}    
+                            </h5>
+                            </th>
+                        <th class="col-md-6 ellipis">@{{ post.content }}</th>
+                        <th class="col-md-1">   
                             <a data-toggle="modal" data-target="#detailPost"><i class="fa fa-eye" aria-hidden="true"></i></a>
                             <a href="{{ route('post.edit', ['id' => 1]) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                            <a><i class="fa fa-fw  fa-close get-color-icon-delete" ></i></a>
+                            <a v-on:click="deletePost(post.id)"><i class="fa fa-fw  fa-close get-color-icon-delete" ></i></a>
                         </th>
                     </tr>
                 </tbody>
             </table>
+            <ul class="pagination">
+                <li v-if="pagination.current_page > 1">
+                    <a href="#" aria-label="Previous" @click.prevent="changePage(pagination.current_page - 1)">
+                        <span aria-hidden="true">«</span>
+                    </a>
+                </li>
+                <li v-for="page in pagesNumber"
+                v-bind:class="[ page == isActived ? 'active' : '']">
+                <a href="#" @click.prevent="changePage(page)">@{{ page }}</a>
+                </li>
+                <li v-if="pagination.current_page < pagination.last_page">
+                    <a href="#" aria-label="Next" @click.prevent="changePage(pagination.current_page + 1)"> <span aria-hidden="true">»</span>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
     <!-- Info User -->
@@ -77,4 +96,7 @@
     </div>
 
 </div>
+@endsection
+@section('script')
+    {{ Html::script('js/post/list.js') }}
 @endsection

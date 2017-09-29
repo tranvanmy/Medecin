@@ -2,7 +2,6 @@
 namespace App\Eloquent\Relations;
 
 use App\Eloquent\Category;
-use App\Eloquent\CategoryPostRelate;
 use App\Eloquent\Post;
 
 trait CategoryRelation
@@ -17,8 +16,8 @@ trait CategoryRelation
         return $this->belongsTo(Category::class, 'parent_id');
     }
 
-    public function postRelationCategories()
+    public function posts()
     {
-        return $this->belongstoMany(CategoryPostRelate::class, 'category_id');
+        return $this->hasMany(Post::class, 'category_id');
     }
 }

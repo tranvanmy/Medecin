@@ -30,7 +30,10 @@
                 </div>
                 <div class="form-group">
                     <label>{{ trans('message.content') }}</label>
-                    <textarea class="form-control" name="content" rows="7"></textarea>
+                    <textarea class="form-control" rows="7" id="content"></textarea>
+                    <script>
+                        CKEDITOR.replace('content');
+                    </script>
                     @if ($errors->has('content'))
                         <span class="help-block">
                             <strong>{{ $errors->first('content') }}</strong>

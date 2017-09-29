@@ -10,6 +10,8 @@
     {!! Html::style('css/app.css') !!}
     {{ Html::style('css/admin/style.css') }}
     {{ Html::style('bower/toastr/toastr.min.css') }}
+    {!! Html::script('bower/ckeditor_stand/ckeditor.js') !!}
+    {!! Html::script('bower/ckfinder/ckfinder.js') !!}
     {{ Html::style('bower/sweetalert2/dist/sweetalert2.css') }}
     @yield('style')
 </head>
@@ -19,7 +21,6 @@
     @include('admin._section.aside')
     @yield('content-admin')
     </div>
-   {{-- {{ Html::script('bower/jquery/dist/jquery.min.js') }} --}}
     {{ Html::script('bower/jquery/dist/jquery.min.js') }}
     {!! Html::script('js/app.js') !!}
     {{ Html::script('bower/owl.carousel/docs/assets/owlcarousel/owl.carousel.min.js') }}

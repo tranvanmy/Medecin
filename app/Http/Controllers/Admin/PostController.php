@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Contracts\Repositories\PostRepository;
+use App\Eloquent\Post;
+use Response;
 
 class PostController extends Controller
 {
@@ -12,8 +15,32 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    protected $post;
+
+    public function __construct(PostRepository $post) {
+        $this->post = $post;
+    }
+
+
+    public function index(Request $request)
+
     {
+       if ($request->ajax()) {
+        $postList = $this->post->getAllPost('1');
+            $response = [
+                'pagination' => [
+                    'total'        => $postList->total(),
+                    'per_page'     => $postList->perPage(),
+                    'current_page' => $postList->currentPage(),
+                    'last_page'    => $postList->lastPage(),
+                    'from'         => $postList->firstItem(),
+                    'to'           => $postList->lastItem()
+                ],
+                'data' => $postList
+            ];
+
+            return response()->json($response);
+        }
         return view('admin.posts.index');
     }
 
@@ -80,6 +107,17 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $post = $this->post->find($id, []);
+
+            $post->delete();
+            $response = trans('delete_success');
+
+            return response()->json($response);
+        } catch (Exception $e ) {
+            $response = trans('delete_failed');
+
+            return response()->json($response);
+        }
     }
 }
