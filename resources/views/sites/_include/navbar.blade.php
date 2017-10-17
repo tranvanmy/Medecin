@@ -8,7 +8,7 @@
 
   <a class="navbar-brand" href="#"><img src="images/logo.png"  class='img-responsive' alt="" id="logo"></a>
 
-  <div class="collapse navbar-collapse nav-right nav-bar " id="navbarSupportedContent">
+  <div class="collapse navbar-collapse nav-right nav-bar pull-right" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item text-center">
         <a class="nav-link" href="{{ route('index') }}">TRANG CHỦ</a>

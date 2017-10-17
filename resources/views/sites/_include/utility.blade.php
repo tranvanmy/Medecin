@@ -13,11 +13,19 @@
                       <div class="col-sm-4 col-md-4">
                           <div class="wow fadeInUp" data-wow-delay="0.2s">
                               <div class="box text-center">
-                                    <i class="fa fa-user-md fa-3x circled bg-skin"></i>
+                                @if(Auth::check())
+                                 <a class="dropdown-item" href="/profile/video-sieu-am"><i class="fa fa-user-md fa-3x circled bg-skin"></i></a>
                                     <h4 class="h-bold">Video siêu âm</h4>
                                     <p>
-                                        Thuận lợi trong việc xe kết quả siêu âm, giảm thời gian ... bla....bla
+                                        Thuận lợi trong việc xe kết quả siêu âm, giảm thời gian....
                                     </p>
+                                @else 
+                                    <a href="{{ route('login') }}"><i class="fa fa-user-md fa-3x circled bg-skin"></i></a>
+                                    <h4 class="h-bold">Video siêu âm</h4>
+                                    <p>
+                                        Thuận lợi trong việc xe kết quả siêu âm, giảm thời gian....
+                                    </p>
+                                @endif
                               </div>
                           </div>
                       </div>
@@ -27,7 +35,7 @@
                                    <a href="{{ route('doctor.calender.show') }}"><i class="fa fa-list-alt fa-3x circled bg-skin"></i></a>
                                   <h4 class="h-bold">Lịch làm việc bác sĩ</h4>
                                   <p>
-                                      Dễ dàng tra cứu lịch làm việc bác sĩ .bla...bla...bla...bla
+                                      Dễ dàng tra cứu lịch làm việc bác sĩ...
                                   </p>
                               </div>
                           </div>
@@ -35,10 +43,12 @@
                       <div class="col-sm-4 col-md-4">
                           <div class="wow fadeInUp" data-wow-delay="0.2s">
                               <div class="box text-center">
+                              <a href="{{ route('contact.store') }}">
                                   <i class="fa fa-hospital-o fa-3x circled bg-skin"></i>
-                                  <h4 class="h-bold">Hỏi và đáp</h4>
+                              </a>
+                                  <h4 class="h-bold">Lien He</h4>
                                   <p>
-                                     Những câu hỏi thường gặp của bệnh nhân...bla bla bla.bla...bla
+                                     Tra loi nhung cau hoi nhanh nhat ...
                                   </p>
                               </div>
                           </div>

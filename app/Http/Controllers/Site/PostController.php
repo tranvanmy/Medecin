@@ -82,7 +82,7 @@ class PostController extends Controller
     public function show($category, $post_name)
     {
         $name = str_replace('-', ' ', $post_name);
-        $name = Helper::search($name);
+        // $name = Helper::search($name);
         $id = $this->post->search($name, [])->first()->id;
 
         $post = $this->post->find($id, []);
