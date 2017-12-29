@@ -17,6 +17,13 @@ class LoginAdminController extends Controller
      */
     public function index()
     {
+        if(Auth::user()) {
+          if(Auth::user()->permission == 1 || Auth::user()->permission == 2) {
+            return redirect('admin/home-admin');
+          }
+        }
+
+        // dd('what');
         return view('sites.loginadmin.index');
     }
 

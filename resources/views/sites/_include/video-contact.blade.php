@@ -7,9 +7,11 @@
           <h2 class='topic-name'>Video</h2>
           <div class="line"></div>
        </div>
+       @if( isset($videoIntro))
         <video controls="controls" width="100%" >
             <source src="{{ $videoIntro }}" type="video/mp4" />
         </video>
+        @endif
       </div>
       <div class="col-sm-4">
         <div class="col-sm-12">

@@ -82,7 +82,9 @@
                               <th>Ngày khám</th>
                               <th>Video</th>
                               <th>Đang phát</th>
-                              <th>Xóa</th>
+                              @if(Auth::user()->permission == 1)
+                                <th>Xóa</th>
+                              @endif
                               <th>Chỉnh sửa</th>
                             </tr>
                           </thead>
@@ -92,13 +94,16 @@
                                 <td>{{$history->date_examination}}</td>
                                 <td><a class='a-player' href="#" data-blink="{{ $key }}" data-src="http://sanchoi.net/{{$history->media->path . $history->media->name . '.' . $history->media->type }}">Video {{$key}}</a></td>
                                 <td><i id="{{ $key }}" class="{{ $key == 0 ? 'fa fa-play blink' : '' }}"></i></td>
+                                @if(Auth::user()->permission == 1)
                                 <td>
                                   <form action="{{route('media-medical.destroy', ['id' => $history->id])}}" method="post">
                                     {{ method_field('DELETE') }}
                                     {{ csrf_field() }}
-                                    <button onclick="return alert()" type="submit" class="btn btn-danger" ><i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;&nbsp;Xóa</button>
+
+                                      <button onclick="return alert()" type="submit" class="btn btn-danger" ><i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;&nbsp;Xóa</button>
                                   </form>
                                 </td>
+                                @endif
                                 <td>
                                   <button data-content= "{{ $history->content }}" data-history-id="{{ $history->id }}" data-toggle="modal" data-target="#addVideo" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Chỉnh sửa</button>
                                 </td>
@@ -158,12 +163,14 @@
                                   <input type="hidden" name="_method" value="PUT">
                                   {{ csrf_field() }}
                                   {{-- video  --}}
+                                  @if(Auth::user()->permission ==1 )
                                     <div class="form-group">
                                         <label>Chọn video khác</label>
                                         <div>
                                             <input id="file" type="file" name="video" class="form-control">
                                         </div>
                                     </div>
+                                  @endif  
                                   {{-- content --}}
                                     <div class="form-group">
                                       <label for=""> Nội dung </label>

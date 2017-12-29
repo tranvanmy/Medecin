@@ -44,7 +44,9 @@
                             <th class="col-md-3">@{{ item.phone }}</th>
                             <th class="col-md-3">@{{ item.email }}</th>
                             <th class="col-md-2">
+                              @if (Auth::user()->permission == 1)
                                 <a  @click='addIdModal(item.id)'  class="btn btn-success" data-toggle="modal" data-target="#addVideo" ><i class="fa fa-file-video-o" aria-hidden="true"></i></a>
+                              @endif  
                                 <a :href="'patient/' + item.id " class="btn btn-warning"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                 <a href="javascript:void(0)"  class="btn btn-primary" v-on:click="editPatient(item.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                 @if (Auth::user()->permission == 1)

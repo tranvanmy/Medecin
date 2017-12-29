@@ -39,7 +39,7 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-    
+
     /**
      * Tran Van My
      * 25/09/2017
@@ -48,7 +48,7 @@ class LoginController extends Controller
      * @return boolean
      */
     public function postLogin(Request $request)
-    {   
+    {
         $email = $request->email;
         $password = $request->password;
         $remember = $request->input('remember');
@@ -68,4 +68,15 @@ class LoginController extends Controller
             return redirect('/dangnhap-admin');
         }
     }
+
+    protected function redirectTo()
+    {
+        if(Auth::user()) {
+          if(Auth::user()->permission == 1 || Auth::user()->permission == 2) {
+            return "admin/home-admin";
+          }
+        }
+        return "/";
+    }
+
 }

@@ -9,7 +9,7 @@ new Vue({
             'name': '',
             'email': '',
             'address': '',
-            'phone': '123456789',
+            'phone': '',
             'age': '',
             'sex': 1,
         },
@@ -32,7 +32,7 @@ new Vue({
                 'name': '',
                 'email': '',
                 'address': '',
-                'phone': '123456789',
+                'phone': '',
                 'age': '',
                 'sex': 1,
             };
@@ -101,10 +101,10 @@ new Vue({
             });
         },
         createPatient: function () {
+            this.resetData();
             $('#newPatient').modal('show');
         },
         storePatient: function() {
-					$("#addnewpatients").attr('disabled', 'disabled');
             var authOptions = {
                 method: 'post',
                 params: this.patient,
@@ -114,45 +114,35 @@ new Vue({
             axios(authOptions).then(response => {
                 if (response.data.status == 'success') {
                     toastr.success(response.data.message, response.data.action, {timeOut: 10000});
-										this.resetData();
-										$("#addnewpatients").removeAttr('disabled');
                     $('#newPatient').modal('hide');
                 }
 
                 if (response.data.status == 'error') {
                     toastr.error(response.data.message, response.data.action, {timeOut: 10000});
-										$("#addnewpatients").removeAttr('disabled');
                 }
 
                 if (response.data.status == 'unique') {
                     toastr.warning(response.data.message, response.data.name, {timeOut: 10000});
-										$("#addnewpatients").removeAttr('disabled');
                 }
                 this.listPatients();
             }).catch(error => {
                 if (error.response.data.email) {
                     toastr.error(error.response.data.email, '', {timeOut: 5000});
-										$("#addnewpatients").removeAttr('disabled');
                 }
                 if (error.response.data.phone) {
                     toastr.error(error.response.data.phone, '', {timeOut: 5000});
-										$("#addnewpatients").removeAttr('disabled');
                 }
                 if (error.response.data.age) {
                     toastr.error(error.response.data.age, '', {timeOut: 5000});
-										$("#addnewpatients").removeAttr('disabled');
                 }
                 if (error.response.data.name) {
                     toastr.error(error.response.data.name, '', {timeOut: 5000});
-										$("#addnewpatients").removeAttr('disabled');
                 }
                 if (error.response.data.address) {
                     toastr.error(error.response.data.address, '', {timeOut: 5000});
-										$("#addnewpatients").removeAttr('disabled');
                 }
                 if (error.response.data.sex) {
                     toastr.error(error.response.data.sex, '', {timeOut: 5000});
-										$("#addnewpatients").removeAttr('disabled');
                 }
             });
         },

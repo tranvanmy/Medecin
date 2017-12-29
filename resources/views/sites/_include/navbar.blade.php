@@ -41,7 +41,7 @@
         <a class="nav-link" href="login">ĐĂNG NHẬP</a>
       </li>
       @else
-      <li class="nav-item dropdown text-center">
+      <li style="cursor: pointer" class="nav-item dropdown text-center">
         <a class="nav-link dropdown-toggle" data-target="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{ strtoupper(Auth::user()->name) }}
         </a>
