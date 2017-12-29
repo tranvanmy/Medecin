@@ -56,7 +56,7 @@ class IndexController extends Controller
                         $postNewest[] = $post;
                     }
                 }
-                
+
             }
             $postNewest = array_slice($postNewest, 0, 3);
         }
@@ -67,7 +67,7 @@ class IndexController extends Controller
                 $value->path = asset(config('custom.media.sliders.defaultPath') . $value->path);
             }
         }
-        
+
         $videoIntro = asset(config('custom.media.video_intro.defaultPath') . $this->media->getVideoIntro([])->path);
 
         $specicals = $this->specical->getAll(1);

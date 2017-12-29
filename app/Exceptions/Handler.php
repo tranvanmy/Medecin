@@ -44,6 +44,8 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+      // trang lỗi, đang dev lên comment lại
+      // return view('errorpage');
         return parent::render($request, $exception);
     }
 
