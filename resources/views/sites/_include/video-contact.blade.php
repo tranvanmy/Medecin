@@ -41,7 +41,7 @@
           </div>
           <div class="form-group">
             <label for="formGroupExampleInput2">Số điện thoại</label>
-            <input type="text" name="phone" class="form-control" id="formGroupExampleInput2" placeholder="Vui lòng nhập số điện thoại" required value="{{ old('phone') }}">
+            <input type="text" name="phone" class="form-control" id="formGroupExampleInput2" placeholder="Vui lòng nhập số điện thoại"  value="{{ old('phone') }}">
             @if ($errors->has('phone'))
               <span class="help-block">
                 <strong>{{ $errors->first('phone') }}</strong>
@@ -50,7 +50,7 @@
           </div>
           <div class="form-group">
             <label for="formGroupExampleInput2">Email</label>
-            <input type="email" class="form-control" name="email" id="formGroupExampleInput2" placeholder="Vui lòng nhập nhập Email" required value="{{ old('email') }}">
+            <input type="email" class="form-control" name="email" id="formGroupExampleInput2" placeholder="Vui lòng nhập nhập Email"  value="{{ old('email') }}">
             @if ($errors->has('email'))
               <span class="help-block">
                 <strong>{{ $errors->first('email') }}</strong>

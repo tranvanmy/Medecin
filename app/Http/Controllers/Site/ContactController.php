@@ -55,7 +55,8 @@ class ContactController extends Controller
     {
         $newContact = $request->all();
         $newContact['status'] = config('custom.contact.pending');
-
+        $newContact['phone'] = empty($newContact['phone']) ? "X" : $newContact['phone'];
+        $newContact['email'] = empty($newContact['email']) ? "X" : $newContact['email'];
         if ($this->contact->create($newContact)) {
             return back()->with('success', trans('message.contact_success'));
         } else {

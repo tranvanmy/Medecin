@@ -25,9 +25,9 @@ class ContactRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'phone' => 'required|string|min:9|max:12',
-            'email' => 'required|email|max:255|unique:contacts',
-            'content' => 'required|string|max:400',
+            // 'phone' => 'string|min:9|max:12',
+            // 'email' => 'required|email|max:255|unique:contacts',
+            'content' => 'required|string|max:1000',
         ];
     }
 }
