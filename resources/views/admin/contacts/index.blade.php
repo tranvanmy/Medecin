@@ -5,7 +5,7 @@
 <div class="content-wrapper" id="index-contacts">
     <section class="content-header">
         <h1>
-            <small>Contact</small>
+            <small>Liên hệ</small>
 
         </h1>
         <ol class="breadcrumb">
@@ -35,7 +35,7 @@
                                     <th class="text-center">{{ trans('message.content') }}</th>
                                     <th class="text-center">{{ trans('message.status') }}</th>
                                     <th class="text-center ">{{ trans('message.action') }}</th>
-                                </tr>   
+                                </tr>
                             </thead>
                             <tbody>
                                 <paginate
@@ -56,8 +56,8 @@
                                     <th class="col-md-1">
                                         <a data-toggle="modal"  class="btn btn-success" v-on:click="getDetailContact(item.id)"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                     </th>
-                                </tr>   
-                            </paginate> 
+                                </tr>
+                            </paginate>
                         </tbody>
                     </table>
                     <paginate-links for="contacts" :limit="2" :show-step-links="true" :classes="{'ul': 'pagination'}"></paginate-links>

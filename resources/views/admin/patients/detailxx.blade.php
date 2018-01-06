@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section('content-admin')
-  <input type="hidden" name="baseurl" value="{{ url('/') }}">
+  <input type="hidden" id="baseurl" value="{{ url('/') }}">
 <div class="content-admin content-wrapper">
     <div class="panel ">
       @if(session('success'))
@@ -115,41 +115,9 @@
                         </table>
                       </div>
                     </div>
-                  {{-- @foreach($patient->histories as $history)
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <a href="#{{ $history->id }}" data-toggle="collapse" class="panel-title"><strong>{{ $history->date_examination }}</strong></a>
-                      </div>
-                      <div id="{{ $history->id }}" class="panel-body collapse">
-                        <div class='row'>
-                           <div class="col-md-12">
-                             <p>{{ $history->content }}</p>
-                           </div>
-                        </div>
-                        <div class="row editing">
-                          <div class="col-md-9">
-                            <video controls='controls'>
-                              <source src="http://sanchoi.net/{{$history->media->path.  $history->media->name . "." . $history->media->type}}">
-                            </video>
-                            <br>
-                          </div>
-                          <div class="col-md-3 ">
-                            <br>
-                            <form action="{{route('media-medical.destroy', ['id' => $history->id])}}" method="post">
-                              {{ method_field('DELETE') }}
-                              {{ csrf_field() }}
-                              <button onclick="return alert()" type="submit" class="btn btn-danger" ><i class="fa fa-trash-o" aria-hidden="true"></i>Xóa</button>
-                            </form>
-                            <br>
-                            <button data-content= "{{ $history->content }}" data-history-id="{{ $history->id }}" data-toggle="modal" data-target="#addVideo" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Chỉnh sửa</button>
-                          </div>
-                        </div>
-                      </div>
 
 
 
-                    </div>
-                  @endforeach --}}
                 </div>
               {{-- edit modal --}}
                 <div class="modal fade" id="addVideo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -204,9 +172,11 @@
         })
 
         $("button[data-toggle='modal']").click(function() {
+
           let history_id = $(this).data('history-id');
           let content = $(this).data('content');
           let baseurl = $('#baseurl').val();
+          console.log(baseurl);
           $('#modal-content').val(content);
         $('#modal-form').attr('action', baseurl + '/admin/media-medical/' + history_id);
         })
